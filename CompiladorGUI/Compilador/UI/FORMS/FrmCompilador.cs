@@ -198,75 +198,47 @@ namespace Compilador.UI.Forms
 
         private void btnCompilar_Click(object sender, EventArgs e)
         {
-            // 1. Validación de texto: si está vacío o solo tiene espacios
+            
             if (string.IsNullOrWhiteSpace(txtEditor.Text))
             {
-                MessageBox.Show("El editor de código está vacío. Ingrese texto para compilar.",
-                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                txtEstatus.Clear();
+                MessageBox.Show("El editor está vacío.", "Advertencia");
                 return;
             }
 
-            // 2. Mensaje inicial en el estatus
-            txtEstatus.Clear();
-            txtEstatus.AppendText("Analizador léxico iniciado..." + Environment.NewLine);
-
-            // 3. Llamada al proceso de análisis
-            EjecutarAnalisisLexico(txtEditor.Text);
-        }
-        //__________________________________________________________________________________________________________//
-        private void EjecutarAnalisisLexico(string codigo)
-        {
+            
             txtTokens.Clear();
-            txtEstatus.AppendText("Analizando tokens..." + Environment.NewLine);
+            txtEstatus.Clear();
 
-            // Definición de patrones sin espacios en los nombres de grupo
-            var definiciones = new (string Patron, string Tipo)[]
+            
+            txtEstatus.AppendText("Ha iniciado el léxico" + Environment.NewLine);
+
+            
+            var fuente = CodigoFuente.DesdeTexto(txtEditor.Text);
+
+            //---Revision de validaciones--//
+            if (fuente != null)
             {
-        (@"\b(if|else|while|for|int|float|string|return)\b", "PalabraReservada"),
-        (@"[a-zA-Z_][a-zA-Z0-9_]*", "Identificador"),
-        (@"\d+(\.\d+)?", "Numero"),
-        (@"[\+\-\*/=]", "Operador"),
-        (@"[;(){}\[\]]", "Delimitador"),
-        (@"\s+", "Espacio")
-            };
+                txtEstatus.AppendText("✓ Instancia de CodigoFuente creada con éxito." + Environment.NewLine);
+                txtEstatus.AppendText($"✓ Líneas detectadas: {fuente.NumeroLineas}" + Environment.NewLine);
 
-            try
-            {
-                // Unimos los patrones en una sola expresión regular
-                string patronGlobal = string.Join("|", definiciones.Select(d => $"(?<{d.Tipo}>{d.Patron})"));
-                Regex regex = new Regex(patronGlobal);
-                MatchCollection coincidencias = regex.Matches(codigo);
-
-                foreach (Match match in coincidencias)
+                
+                if (fuente.NumeroLineas > 0)
                 {
-                    foreach (var def in definiciones)
-                    {
-                        if (match.Groups[def.Tipo].Success)
-                        {
-                            if (def.Tipo != "Espacio") // No mostramos los espacios en la lista
-                            {
-                                txtTokens.AppendText($"<{def.Tipo}> : {match.Value}" + Environment.NewLine);
-                            }
-                            break;
-                        }
-                    }
+                    txtEstatus.AppendText($"✓ Contenido inicial: {fuente.ObtenerLinea(1)}" + Environment.NewLine);
                 }
-                txtEstatus.AppendText("--- Análisis léxico finalizado con éxito ---" + Environment.NewLine);
             }
-            catch (Exception ex)
+            else
             {
-                txtEstatus.AppendText("Error crítico en el análisis: " + ex.Message + Environment.NewLine);
+                txtEstatus.AppendText("X Error: No se pudo crear la instancia." + Environment.NewLine);
             }
-        }
+        
 
-        // Estructura para almacenar los tokens
+
+    }
+       
+
+       
         
     }
-    public class Token
-    {
-        public string Tipo { get; set; }
-        public string Valor { get; set; }
-    }
+    
 }
