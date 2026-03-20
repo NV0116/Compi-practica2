@@ -41,7 +41,7 @@ namespace Compilador
         {
             int estado = 0;
             var lexema = new StringBuilder();
-            string linea = (lineaOriginal ?? string.Empty) + " "; // Espacio centinela
+            string linea = (lineaOriginal ?? string.Empty) + " ";
 
             for (int i = 0; i < linea.Length; i++)
             {
@@ -52,13 +52,13 @@ namespace Compilador
                 {
                     string comentario = lineaOriginal.Substring(i).Trim();
                     resultado.AgregarAviso($"[Comentario] Línea {numLinea}: {comentario}");
-                    break; // se deja de analizar la línea
+                    break;
                 }
 
                 int columna = _matriz.ObtenerColumna(c);
                 int valorMatriz = _matriz.SiguienteEstado(estado, columna);
 
-                // --- GESTIÓN DE ERRORES ---
+                // --- GESTIÓN DE ERRORES (Desde la Matriz) ---
                 if (valorMatriz >= 500)
                 {
                     resultado.AgregarAviso($"[Error {valorMatriz}] Línea {numLinea}: Símbolo '{c}' no válido.");
@@ -67,25 +67,21 @@ namespace Compilador
                     continue;
                 }
 
-                // --- ESTADO INICIAL / ESPACIOS ---
                 if (valorMatriz == 0)
                 {
                     estado = 0;
                     lexema.Clear();
                 }
-                // --- ESTADOS TRANSITORIOS ---
                 else if (valorMatriz < 100)
                 {
                     estado = valorMatriz;
                     lexema.Append(c);
                 }
-                // --- ESTADOS DE ACEPTACIÓN ---
-                else
+                else // --- ESTADOS DE ACEPTACIÓN ---
                 {
                     int tokenFinal = valorMatriz;
                     string lexFinal;
 
-                    // Operadores compuestos (==, >=, <=)
                     if (valorMatriz == 305 || valorMatriz == 307 || valorMatriz == 309)
                     {
                         lexema.Append(c);
@@ -99,6 +95,15 @@ namespace Compilador
                         {
                             lexFinal = c.ToString();
                             tokenFinal = ObtenerCodigoSimboloEspecial(c);
+
+                            
+                            if (tokenFinal >= 500)
+                            {
+                                resultado.AgregarAviso($"[Error {tokenFinal}] Línea {numLinea}: Símbolo '{c}' no reconocido por el lenguaje.");
+                                estado = 0;
+                                lexema.Clear();
+                                continue; 
+                            }
                         }
                         else
                         {
@@ -131,8 +136,10 @@ namespace Compilador
                 case '{': return 313;
                 case '}': return 314;
                 case ',': return 315;
-                case '\'': return 310; 
-                default: return 300;
+                case '\'': return 310;
+                case ':': return 316;
+                case '/': return 317;
+                default: return 500;
             }
         }
 
