@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\NV\\Desktop\\CompiladorGUI-main\\Compilador\\Compilador.csproj": {}
+    "E:\\Sexto Semestre\\Compiladores\\CompiladorGUI\\Compilador\\Compilador.csproj": {}
   },
   "projects": {
-    "D:\\NV\\Desktop\\CompiladorGUI-main\\Compilador\\Compilador.csproj": {
+    "E:\\Sexto Semestre\\Compiladores\\CompiladorGUI\\Compilador\\Compilador.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\NV\\Desktop\\CompiladorGUI-main\\Compilador\\Compilador.csproj",
+        "projectUniqueName": "E:\\Sexto Semestre\\Compiladores\\CompiladorGUI\\Compilador\\Compilador.csproj",
         "projectName": "Compilador",
-        "projectPath": "D:\\NV\\Desktop\\CompiladorGUI-main\\Compilador\\Compilador.csproj",
+        "projectPath": "E:\\Sexto Semestre\\Compiladores\\CompiladorGUI\\Compilador\\Compilador.csproj",
         "packagesPath": "C:\\Users\\alanv\\.nuget\\packages\\",
-        "outputPath": "D:\\NV\\Desktop\\CompiladorGUI-main\\Compilador\\obj\\",
+        "outputPath": "E:\\Sexto Semestre\\Compiladores\\CompiladorGUI\\Compilador\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "D:\\NV\\Programas\\Visual Studio\\Shared\\NuGetPackages"

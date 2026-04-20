@@ -52,3 +52,39 @@ D:\NV\Desktop\CompiladorGUI-main\Compilador\obj\Debug\net8.0-windows\refint\Comp
 D:\NV\Desktop\CompiladorGUI-main\Compilador\obj\Debug\net8.0-windows\Compilador.pdb
 D:\NV\Desktop\CompiladorGUI-main\Compilador\obj\Debug\net8.0-windows\Compilador.genruntimeconfig.cache
 D:\NV\Desktop\CompiladorGUI-main\Compilador\obj\Debug\net8.0-windows\ref\Compilador.dll
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.exe
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.deps.json
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.runtimeconfig.json
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.dll
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.pdb
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.frmCompilador.resources
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.Properties.Resources.resources
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.UI.Forms.FrmCompilador.resources
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.csproj.GenerateResource.cache
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.GeneratedMSBuildEditorConfig.editorconfig
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.AssemblyInfoInputs.cache
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.AssemblyInfo.cs
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.csproj.CoreCompileInputs.cache
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.dll
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\refint\Compilador.dll
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.pdb
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.genruntimeconfig.cache
+D:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\ref\Compilador.dll
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.exe
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.deps.json
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.runtimeconfig.json
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.dll
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\bin\Debug\net8.0-windows\Compilador.pdb
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.frmCompilador.resources
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.Properties.Resources.resources
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.UI.Forms.FrmCompilador.resources
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.csproj.GenerateResource.cache
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.GeneratedMSBuildEditorConfig.editorconfig
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.AssemblyInfoInputs.cache
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.AssemblyInfo.cs
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.csproj.CoreCompileInputs.cache
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.dll
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\refint\Compilador.dll
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.pdb
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\Compilador.genruntimeconfig.cache
+E:\Sexto Semestre\Compiladores\CompiladorGUI\Compilador\obj\Debug\net8.0-windows\ref\Compilador.dll
