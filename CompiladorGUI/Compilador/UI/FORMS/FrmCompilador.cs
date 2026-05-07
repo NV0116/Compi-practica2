@@ -198,75 +198,72 @@ namespace Compilador.UI.Forms
 
         private void btnCompilar_Click(object sender, EventArgs e)
         {
-            // 1. Validación de texto: si está vacío o solo tiene espacios
-            if (string.IsNullOrWhiteSpace(txtEditor.Text))
-            {
-                MessageBox.Show("El editor de código está vacío. Ingrese texto para compilar.",
-                                "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                txtEstatus.Clear();
-                return;
-            }
-
-            // 2. Mensaje inicial en el estatus
-            txtEstatus.Clear();
-            txtEstatus.AppendText("Analizador léxico iniciado..." + Environment.NewLine);
-
-            // 3. Llamada al proceso de análisis
-            EjecutarAnalisisLexico(txtEditor.Text);
-        }
-        //__________________________________________________________________________________________________________//
-        private void EjecutarAnalisisLexico(string codigo)
-        {
             txtTokens.Clear();
-            txtEstatus.AppendText("Analizando tokens..." + Environment.NewLine);
+            txtEstatus.Clear();
 
-            // Definición de patrones sin espacios en los nombres de grupo
-            var definiciones = new (string Patron, string Tipo)[]
+            var fuente = CodigoFuente.DesdeTexto(txtEditor.Text);
+            var analizador = new AnalizadorLexico();
+            var resultado = analizador.Analizar(fuente);
+
+            // 1. Mostrar Avisos/Errores
+            foreach (var aviso in resultado.Avisos)
             {
-        (@"\b(if|else|while|for|int|float|string|return)\b", "PalabraReservada"),
-        (@"[a-zA-Z_][a-zA-Z0-9_]*", "Identificador"),
-        (@"\d+(\.\d+)?", "Numero"),
-        (@"[\+\-\*/=]", "Operador"),
-        (@"[;(){}\[\]]", "Delimitador"),
-        (@"\s+", "Espacio")
-            };
+                txtEstatus.AppendText(aviso + Environment.NewLine);
+            }
 
-            try
+            // 2. AGRUPAR TOKENS POR LÍNEA 
+            var tokensAgrupados = resultado.Tokens
+                .GroupBy(t => t.Linea)
+                .OrderBy(g => g.Key);
+
+            foreach (var grupo in tokensAgrupados)
             {
-                // Unimos los patrones en una sola expresión regular
-                string patronGlobal = string.Join("|", definiciones.Select(d => $"(?<{d.Tipo}>{d.Patron})"));
-                Regex regex = new Regex(patronGlobal);
-                MatchCollection coincidencias = regex.Matches(codigo);
+                // Construye la cadena: [NumLinea] [ID1] [ID2]
+                string ids = string.Join(" ", grupo.Select(t => $"[{t.Tipo}]"));
+                txtTokens.AppendText($"[{grupo.Key}] {ids}{Environment.NewLine}");
+            }
 
-                foreach (Match match in coincidencias)
+            txtEstatus.AppendText("Análisis finalizado.");
+
+
+            txtEstatus.AppendText("Fase 2 [Sintáctico] INICIADO" + Environment.NewLine);
+
+            var analizadorSintactico = new AnalizadorSintactico();
+            analizadorSintactico.Parse(resultado.Tokens);
+
+            if (analizadorSintactico.Errores.Count == 0)
+            {
+                txtEstatus.AppendText("Análisis Sintáctico finalizado con éxito" + Environment.NewLine);
+            }
+
+            txtEstatus.AppendText("Fase 3 [Semántico] INICIADO" + Environment.NewLine);
+
+            var analizadorSemantico = new AnalizadorSemantico();
+            analizadorSemantico.Analizar(resultado.Tokens);
+
+            if (analizadorSemantico.Errores.Count == 0)
+            {
+                txtEstatus.AppendText("Análisis Semántico finalizado con éxito" + Environment.NewLine);
+            }
+            else
+            {
+                foreach (var error in analizadorSemantico.Errores)
                 {
-                    foreach (var def in definiciones)
-                    {
-                        if (match.Groups[def.Tipo].Success)
-                        {
-                            if (def.Tipo != "Espacio") // No mostramos los espacios en la lista
-                            {
-                                txtTokens.AppendText($"<{def.Tipo}> : {match.Value}" + Environment.NewLine);
-                            }
-                            break;
-                        }
-                    }
+                    txtEstatus.AppendText(error + Environment.NewLine);
                 }
-                txtEstatus.AppendText("--- Análisis léxico finalizado con éxito ---" + Environment.NewLine);
             }
-            catch (Exception ex)
-            {
-                txtEstatus.AppendText("Error crítico en el análisis: " + ex.Message + Environment.NewLine);
-            }
+
+            // MOSTRAR TABLA EN GRID
+            gridSimbolos.DataSource = null;
+            gridSimbolos.DataSource = analizadorSemantico.TablaSimbolos;
+
         }
 
-        // Estructura para almacenar los tokens
-        
+        private void gridSimbolos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
-    public class Token
-    {
-        public string Tipo { get; set; }
-        public string Valor { get; set; }
-    }
+
 }

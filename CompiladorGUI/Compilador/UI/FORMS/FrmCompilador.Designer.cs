@@ -197,6 +197,7 @@
             gridSimbolos.RowHeadersWidth = 51;
             gridSimbolos.Size = new Size(187, 170);
             gridSimbolos.TabIndex = 0;
+            gridSimbolos.CellContentClick += gridSimbolos_CellContentClick;
             // 
             // openFileDialog1
             // 
